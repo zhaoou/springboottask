@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Quote Task</title>
+</head>
+
+<body>
+<h1>Welcome to the Quota Task</h1>
+
+	<ul th:each =" quote : ${quotes}">
+
+		<li th:text="${quote.text + ' - ' + quote.author}"> </li>
+
+		<a th:href="@{/delete/{id}(id=${quote.id})}">delete</a>
+
+		<!--  <a  th:href="@{/edit/{id}(id=${task.id})}">edit</a>-->
+
+		
+
+	</ul>
+
+<h1> Create New Quote:</h1>
+
+<form action="#" th:action="@{/save}" th:object="${quote}" method="post">
+
+	<label>Text:</label>
+
+	<input type="text" th:field="*{text}" />
+	<!--<input type="text" name="text" /> -->
+	<label>Author:</label>
+
+	<input type="text" th:field="*{author}" />
+
+	<input type="submit" value="Submit" />   
+
+</form>
+
+</body>
+</html>
